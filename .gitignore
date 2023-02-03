@@ -1,5 +1,5 @@
 # Built JS files
-build
+build/*
 
 # Logs
 logs
