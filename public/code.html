@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>alieb</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/pico.min.css">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  </head>
+  <body data-theme="light">
+    <div class="container">
+      <nav>
+        <ul>
+          <li><strong><a class="contrast" href="/">Aaron Lieberman</a></strong></li>
+        </ul>
+        <ul>
+          <li><a href="/leaderboard">Leaderboard</a></li>
+        </ul>
+      </nav>
+    </div>
+    <main class="container">
+      <center>
+        <input readonly id="url">
+      </center>
+    </main>
+  </body>
+  <script >
+    const input = document.getElementById("url")
+    console.log(input)
+    input.value = new URLSearchParams(location.search).get("url");
+  </script>
+</html>
