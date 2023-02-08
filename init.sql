@@ -16,5 +16,5 @@ DROP TABLE IF EXISTS Clicks;
 CREATE TABLE Clicks (
   linkName CHAR(32),
   userName CHAR(32),
-  FOREIGN KEY(linkName) REFERENCES Links(name),
+  FOREIGN KEY(linkName) REFERENCES Links(name)
 );

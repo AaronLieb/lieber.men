@@ -20,19 +20,31 @@ app.get('/leaderboard', (req, res) => {
   res.sendFile(path.join(__dirname + '/../public/leaderboard.html'));
 });
 
+app.get('/api/leaderboard', async (req, res) => {
+  const data = await query(
+    "SELECT Links.createdBy as user, count(Clicks.userName) numClicks FROM Clicks INNER JOIN Links ON Links.name = Clicks.linkName GROUP BY Links.createdBy ORDER BY count(Clicks.userName) DESC;"
+    , []).catch((e) => {})
+  res.json(data);
+})
+
 app.post('/generate_url', async (req, res) => {
   const body = req.body;
-  await query("INSERT INTO Users (name) VALUES (?);", [body.name])
-  await query("INSERT INTO Links (name, createdBy) VALUES (?, ?);", [body.name, body.url])
-  res.send(`Here is your link: <code>aaron.lieber.men/sus/${body.url}`);
+  const user = await query("SELECT * FROM Users WHERE name = ?", [body.name])
+  await query("INSERT INTO Users (name) VALUES (?);", [body.name]).catch((e) => {})
+  await query("INSERT INTO Links (name, createdBy) VALUES (?, ?);", [body.url, body.name]).catch((e) => {
+    res.status(400).send("Link already exists")
+  })
+  if (res.headersSent) return;
+  res.json({
+    url: `aaron.lieber.men/sus/${body.url}`
+  });
 });
 
 app.get('/sus/:id', async (req, res) => {
   if (req.cookies.pass === process.env.PHISHING_PASSWORD) {
     await query("INSERT INTO Clicks (userName, linkName) VALUES ('Aaron', ?);", [req.params.id])
   }
-  const user = await query("Select name FROM Links WHERE url = ?;", [req.params.id])
-  console.log(user)
+  //const user = await query("Select userName FROM Links WHERE linkName = ?;", [req.params.id])
   res.sendFile(path.join(__dirname + '/../public/youJustGotPhished.html'));
 });
 
