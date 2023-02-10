@@ -8,24 +8,32 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="/css/pico.min.css">
   </head>
+  <body>
+    <main class="container">
+      <center>
+        <!-- <h1> YOU JUST GOT PHISHED!!!! </h1> -->
+        <!-- <img src="/assets/phish.jpg"> -->
+      </center>
+    </main>
+    <footer class="container">
+      <center id="logged">
+        <p> Click was logged.</p>
+      </center>
+      <center id="not_logged">
+        <a role="button" href="javascript:password_prompt()">I am Aaron</a>
+      </center>
+    </footer>
+  </body>
   <script>
+    const logged = document.getElementById("logged")
+    const not_logged = document.getElementById("not_logged")
+    if (document.cookie) not_logged.style.display = 'none';
+    else logged.style.display = 'none';
+
     const password_prompt = () => {
       const pass = prompt("Enter password");
       document.cookie = `pass=${pass}`;
       location.reload()
     }
   </script>
-  <body>
-    <main class="container">
-      <center>
-        <h1> YOU JUST GOT PHISHED!!!! </h1>
-        <img src="/assets/phish.jpg">
-      </center>
-    </main>
-    <footer class="container">
-      <center>
-        <a role="button" href="javascript:password_prompt()">I am Aaron</a>
-      </center>
-    </footer>
-  </body>
 </html>
