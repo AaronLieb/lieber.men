@@ -29,7 +29,7 @@ app.get('/api/leaderboard', async (req, res) => {
 
 app.post('/generate_url', async (req, res) => {
   const body = req.body;
-  const user = await query("SELECT * FROM Users WHERE name = ?", [body.name])
+  body.url = encodeURIComponent(body.url)
   await query("INSERT INTO Users (name) VALUES (?);", [body.name]).catch((e) => {})
   await query("INSERT INTO Links (name, createdBy) VALUES (?, ?);", [body.url, body.name]).catch((e) => {
     res.status(400).send("Link already exists")
