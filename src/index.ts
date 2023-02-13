@@ -41,11 +41,18 @@ app.post('/generate_url', async (req, res) => {
 });
 
 app.get('/sus/:id', async (req, res) => {
-  if (req.cookies.pass === process.env.PHISHING_PASSWORD) {
+  if (req.cookies.pass && req.cookies.pass === process.env.PHISHING_PASSWORD) {
     await query("INSERT INTO Clicks (userName, linkName) VALUES ('Aaron', ?);", [req.params.id])
   }
-  //const user = await query("Select userName FROM Links WHERE linkName = ?;", [req.params.id])
   res.sendFile(path.join(__dirname + '/../public/youJustGotPhished.html'));
+});
+
+app.get('/blog/', async (req, res) => {
+  res.sendFile(path.join(__dirname + `/../public/blog/index.html`));
+});
+
+app.get('/blog/:id', async (req, res) => {
+  res.sendFile(path.join(__dirname + `/../public/blog/${req.params.id}.html`));
 });
 
 app.use(express.static('public'))
