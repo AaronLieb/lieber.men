@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-./blog/tools/build && sudo systemctl reload caddy && sudo systemctl restart liebermen.service
+[ `whoami` = root ] || { sudo "$0" "$@"; exit $?; }
+
+caddy stop
+caddy start
+systemctl restart liebermen.service
