@@ -1,8 +1,8 @@
 {
-  "slug": "example",
+  "slug": "the_blog_begins",
   "title": "The Blog Begins",
-  "writtenAt": 1676410157,
-  "updatedAt": 1676410157,
+  "writtenAt": 1676410850,
+  "updatedAt": 1676410850,
   "synopsis": {
     "text": "The Blog Begins\nWelcome to the alieb log\nI think I'm gonna start writing more, so I stole some static file generation code from my friend diamond\nI've been thinking about participating in more CTFs, so I'll try to put all my writeups here as well.",
     "html": "<h1>The Blog Begins</h1>\n<p>Welcome to the alieb log</p>\n<p>I think I'm gonna start writing more, so I stole some static file generation <a href=\"https://github.com/diamondburned/gomblog\">code</a> from my friend <a href=\"https://github.com/diamondburned\">diamond</a></p>\n<p>I've been thinking about participating in more CTFs, so I'll try to put all my writeups here as well.</p>",
