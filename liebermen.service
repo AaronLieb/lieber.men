@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/ubuntu/.nvm/versions/node/v19.6.0/bin/npm start
-WorkingDirectory=/home/ubuntu/GitHub/lieber.men
+ExecStart=/home/ubuntu/.nvm/versions/node/v19.6.0/bin/node build/index.js
+WorkingDirectory=/home/ubuntu/GitHub/lieber.men/phish
 Environment="HOST=127.0.0.1"
 Environment="PORT=6969"
 
