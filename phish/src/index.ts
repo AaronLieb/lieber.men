@@ -14,16 +14,12 @@ app.use(express.urlencoded({extended : false}));
 app.use(express.json());
 app.use(cookieParser())
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../public/phishing.html'));
-});
-
 app.get('/api/leaderboard', async (req, res) => {
   const data =
-      await query(
-          "SELECT Links.createdBy as user, count(Clicks.userName) numClicks FROM Clicks INNER JOIN Links ON Links.name = Clicks.linkName GROUP BY Links.createdBy ORDER BY count(Clicks.userName) DESC;", [])
-          .catch((e) => {})
-  res.json(data);
+    await query(
+      "SELECT Links.createdBy as user, count(Clicks.userName) numClicks FROM Clicks INNER JOIN Links ON Links.name = Clicks.linkName GROUP BY Links.createdBy ORDER BY count(Clicks.userName) DESC;", [])
+      .catch((e) => {})
+      res.json(data);
 })
 
 app.post('/generate_url', async (req, res) => {
