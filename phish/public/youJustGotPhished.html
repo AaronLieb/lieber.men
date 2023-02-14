@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>alieb</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/css/pico.min.css">
+  </head>
+  <body>
+    <main class="container">
+      <center>
+        <h1> YOU JUST GOT PHISHED!!!! </h1>
+        <img src="/assets/phish.jpg">
+      </center>
+    </main>
+    <footer class="container">
+      <center id="logged">
+        <p> Click was logged.</p>
+      </center>
+      <center id="not_logged">
+        <a role="button" href="javascript:password_prompt()">I am Aaron</a>
+      </center>
+    </footer>
+  </body>
+  <script>
+    const logged = document.getElementById("logged")
+    const not_logged = document.getElementById("not_logged")
+    if (document.cookie) not_logged.style.display = 'none';
+    else logged.style.display = 'none';
+
+    const password_prompt = () => {
+      const pass = prompt("Enter password");
+      document.cookie = `pass=${pass}`;
+      location.reload()
+    }
+  </script>
+</html>
