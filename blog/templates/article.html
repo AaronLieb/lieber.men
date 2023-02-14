@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{{ template "components/head.html" }}
+{{ $article := datasource "article" }}
+<meta property="og:title" content="{{ $article.title }}" />
+<meta property="og:site_name" content="diamond's blog" />
+<meta property="og:type" content="article" />
+<meta property="og:description" content="{{ $article.synopsis.text }}" />
+<meta property="article:author" content="diamondburned" />
+<title>{{ $article.title }} — diamond's blog</title>
+
+{{ template "components/header.html" }}
+
+<main id="article">
+	<article>
+		<aside>
+			<datetime>{{ (time.Unix $article.writtenAt).Format "2006/01/02" }}</datetime>
+			{{ if not (eq $article.writtenAt $article.updatedAt) }}
+			(updated at <datetime>{{ (time.Unix $article.updatedAt).Format "2006/01/02" }}</datetime>)
+			{{ end }}
+		</aside>
+		<div class="article-body">
+			{{ $article.body.html }}
+		</div>
+	<article>
+</main>
+
+{{ template "components/footer.html" }}

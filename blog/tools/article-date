@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+main() {
+	init "$1"
+	echo "$writtenAt" "$updatedAt" "$slug"
+}
+
+init() {
+	filepath="$1"
+	filename="${filepath##*/}"
+	slug="${filename%.*}"
+
+	headrev=$(commit "$filepath")
+	tailrev=$(commit "$filepath" --reverse)
+	if [[ "$tailrev" != "" ]]; then
+		writtenAt=$(commit_date "$tailrev")
+	fi
+	if [[ "$headrev" != "" ]]; then
+		updatedAt=$(commit_date "$headrev")
+	fi
+
+	if [[ "$slug" =~ ^[0-9]*\+ ]]; then
+		writtenAt="${slug%%+*}"
+		slug="${slug#*+}"
+	fi
+
+	if [[ "$updatedAt" == "" ]] || ! git diff --exit-code --quiet "$filepath"; then
+		read -r updatedAt < <(stat -c '%Y' "$filepath")
+	fi
+
+	if [[ "$writtenAt" == "" ]]; then
+		writtenAt="$updatedAt"
+	fi
+}
+
+commit() {
+	git log --oneline "${@:2}" "$1" | head -n1 | cut -f1 -d' ' 2> /dev/null
+}
+
+commit_date() {
+	git show -s --format="%cd" --date="format:%s" "$1"
+}
+
+main "$@"

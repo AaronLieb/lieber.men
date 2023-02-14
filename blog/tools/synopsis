@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+threshold=400
+synopsis=
+index=0
+html=$(cmark --nobreaks "$1")
+while :; do
+	index=$((index + 1))
+	newSynopsis=$synopsis
+	newSynopsis+=$(htmlq "body > *:nth-child(${index})" <<< "${html}")
+	newSynopsis+=$'\n'
+	if (( ${#synopsis} > 0 && ${#newSynopsis} > threshold )); then
+		break
+	fi
+	if [[ "$newSynopsis" =~ ^.*\<h[2-6]\>.*$ ]]; then
+		break
+	fi
+	synopsis=$newSynopsis
+done
+echo -n "$synopsis"

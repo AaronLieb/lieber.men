@@ -12,6 +12,10 @@ aaron.lieber.men {
   reverse_proxy localhost:6969
 }
 
+blog.lieber.men {
+  file_server * /var/www/blog
+}
+
 lieber.men {
   redir https://aaron.lieber.men{uri}
 }
