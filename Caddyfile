@@ -13,7 +13,8 @@ aaron.lieber.men {
 }
 
 blog.lieber.men {
-  file_server * /var/www/blog
+  root * blog/public
+  file_server
 }
 
 lieber.men {
