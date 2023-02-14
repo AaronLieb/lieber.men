@@ -1,6 +1,9 @@
 # Built JS files
 build/*
 
+# sqlite db
+*.db
+
 # Logs
 logs
 *.log
