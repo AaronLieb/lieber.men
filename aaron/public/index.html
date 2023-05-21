@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>alieb</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/pico.min.css">
-    <link rel="stylesheet" href="css/garden.css">
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
-    <script defer src="js/garden.js"></script>
-    <script defer src="js/minimal-theme-switcher.js"></script>
-  </head>
-  <body>
-    <canvas id="garden"></canvas>
-    <div class="container-fluid">
-      <nav>
-        <ul>
-          <li><strong><a class="contrast" href="/">alieb</a></strong></li>
-        </ul>
-        <ul>
-          <li><a href="https://blog.lieber.men">blog</a></li>
-          <li><a href="/phishing">phishing</a></li>
-        </ul>
-      </nav>
-    </div>
-    <main style="margin-bottom: 25vh">
+
+<head>
+  <title>alieb</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/pico.min.css">
+  <link rel="stylesheet" href="css/garden.css">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
+  <script defer src="js/minimal-theme-switcher.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/diamondburned/libwebring@nightly/dist/webring-element.js"
+    type="module"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/diamondburned/libwebring@nightly/dist/webring.css" />
+</head>
+
+<body>
+  <div class="container-fluid">
+    <nav>
+      <ul>
+        <li><strong><a class="contrast" href="/">alieb</a></strong></li>
+      </ul>
+      <ul>
+        <li><a href="https://blog.lieber.men">blog</a></li>
+        <li><a href="/phishing">phishing</a></li>
+      </ul>
+    </nav>
+  </div>
+  <main style="margin-bottom: 25vh">
+    <center>
+      <hgroup>
+        <h1>Aaron Lieberman</h1>
+        <p>Backend Software Developer</p>
+      </hgroup>
+      <a class="secondary" href="https://blog.lieber.men">Blog</a><br>
+      <a class="secondary" href="/phishing">Phish Me</a><br>
+      <a class="secondary" href="https://dc4.lieber.men">Don't Connect 4</a>
+    </center>
+  </main>
+  <footer class="container-fluid" data-theme="light">
+    <small>
+      <center><a class="" href="https://github.com/AaronLieb/lieber.men">Source code</a></center>
       <center>
-        <section>
-          <a role="button" class="secondary" href="https://blog.lieber.men">Blog</a>
-        </section>
-        <section>
-          <a role="button" class="secondary" href="/phishing">Phish Me</a>
-        </section>
+        <a href="#" data-theme-switcher="light">Light</a><span> / </span>
+        <a href="#" data-theme-switcher="dark">Dark</a><span> / </span>
+        <a href="#" data-theme-switcher="auto">Auto</a>
       </center>
-    </main>
-    <footer class="container-fluid" data-theme="light">
-      <small>
-        <center><a class="" href="https://github.com/AaronLieb/lieber.men">Source code</a></center>
-        <center>
-            <a href="#" data-theme-switcher="light">Light</a><span> / </span>
-            <a href="#" data-theme-switcher="dark">Dark</a><span> / </span> 
-            <a href="#" data-theme-switcher="auto">Auto</a>
-        </center>
-      </small>
-    </footer>
-  </body>
+    </small><br>
+    <webring-element name="aaron" src="webring.json" />
+  </footer>
+</body>
+
 </html>
