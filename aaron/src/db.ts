@@ -5,7 +5,7 @@ dotenv.config();
 
 const db = new sqlite3.Database(process.env.DB_NAME);
 
-export const query = (sql: string, params) => {
+export const query = (sql: string, params: any) => {
 	return new Promise((res, rej) => {
 		db.all(sql, params, (err, rows) => {
 			if (err) rej(err);
